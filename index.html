@@ -15,6 +15,39 @@
 
     <webopt:bundlereference runat="server" path="~/Content/css" />
     <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+
+    <!-- Estilos para las pestañas -->
+    <style>
+        .tabs {
+            display: flex;
+            cursor: pointer;
+        }
+
+        .tabs li {
+            padding: 10px 20px;
+            background-color: #f1f1f1;
+            margin-right: 5px;
+            list-style: none;
+        }
+
+        .tabs li.active {
+            background-color: #007bff;
+            color: white;
+        }
+
+        .tab-content {
+            display: none;
+            padding: 20px;
+            background-color: #f9f9f9;
+            border: 1px solid #ddd;
+            margin-top: 10px;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+    </style>
+
 </head>
 <body>
     <form runat="server">
@@ -44,18 +77,8 @@
                 </div>
             </div>
         </nav>
-        <div class="container body-content">
-            <asp:ContentPlaceHolder ID="MainContent" runat="server">
-            </asp:ContentPlaceHolder>
-            <hr />
-            <footer>
-                <p>&copy; <%: DateTime.Now.Year %> - Mi nueva aplicación</p>
-            </footer>
-        </div>
-    </form>
-    <asp:PlaceHolder runat="server">
-        <%: Scripts.Render("~/Scripts/bootstrap.js") %>
-    </asp:PlaceHolder>
-</body>
 
-</html>
+        <!-- Aquí agregamos las pestañas -->
+        <div class="container body-content">
+            <ul class="tabs">
+                <li class="tab-link active" onclick="showTab('tab1')">Pe
